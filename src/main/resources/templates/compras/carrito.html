@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+
+<title>MusicClips</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+	rel="stylesheet">
+</head>
+<style>
+* {
+	margin: 20;
+	padding: 0;
+}
+
+body {
+	
+}
+
+.col-container {
+	grid-template-columns: 100px 50px 100px;
+	grid-template-rows: 80px auto 80px;
+	column-gap: 10px;
+	row-gap: 15px;
+}
+
+img {
+	float: left;
+	max-width: 100px;
+	height: auto;
+}
+
+h1 {
+	
+}
+
+h2 {
+	
+}
+
+.clear {
+	clear: both;
+}
+
+.wrapper {
+	margin: 20px auto;
+	width: 1200px;
+}
+
+.items {
+	display: block;
+	margin: 20'px 0;
+}
+
+.container {
+	flex-direction: row;
+}
+
+.item {
+	float: left;
+	margin: 20px 0px 50px 20px;
+	width: 200px;
+	padding: 15px;
+	flex-grow: 3;
+	flex-shrink: 3;
+	flex-basis: 0;
+	text-align: center;
+}
+
+.footer {
+	padding: 10px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: black;
+	text-align: center;
+}
+
+h2 {
+	color: #19bd48;
+}
+
+h5 {
+	color: #ffffff;
+}
+
+button {
+	border: 1p solid#
+}
+</style>
+<body>
+	<header th:insert="fragments/menu :: menu-principal"> </header>
+	<main role="main">
+
+		<div class="jumbotron"
+			style="background-image: url(https://www.j-26.com/assets/shopping-cart.png); background-size: 100%;">
+
+			<div class="container">
+				<h3 class="font-weight-light">Mi carrito</h3>
+
+				<div class="col-md-12">
+					<div th:if="${msg != null}" th:text="${msg}"
+						class="alert alert-success" role="alert"></div>
+						
+					<div class="items">
+						<div class="item" th:each="producto : ${productos}">
+
+
+
+							<div class="row">
+
+
+								<ul class="list-group">
+									<li class="list-group-item"><img class="img-fluid"
+										alt="Responsive image"
+										th:src="@{'/recursos/' + ${producto.foto}}"
+										style="max-width: 100%; width: auto; height: auto;"></li>
+									<li class="list-group-item"><span
+										th:text="${producto.nombre}"></span></li>
+									<li class="list-group-item">Categoría: <span
+										th:text="${producto.categoria.nombre}"></span></li>
+									<li class="list-group-item">Publicado: <span
+										th:text="${#dates.format(producto.fecha,'dd-MM-yyyy')}"></span></li>
+
+									<li class="list-group-item">Precio: <span
+										th:text="${producto.precio}"></span></li>
+
+									<li class="list-group-item" th:text="${producto.descripcion}">
+									<li class="list-group-item"><a
+										th:href="@{/compras/comprarproducto/{id} (id=${producto.id})}"
+										type="submit" class="btn btn-outline-success">Comprar</a></li>
+
+
+
+
+									<li class="list-group-item"><a
+										th:href="@{/compras/delete/{id} (id=${producto.id})}"
+										class="btn btn-outline-danger">Eliminar</a></li>
+								</ul>
+
+
+
+
+
+
+
+
+							</div>
+
+
+
+
+						</div>
+
+					</div>
+
+
+
+				</div>
+			</div>
+
+		</div>
+		<!-- /container -->
+	</main>
+	<footer th:insert="fragments/footer :: pie-pagina" class="footer">
+
+	</footer>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

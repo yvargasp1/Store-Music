@@ -1,0 +1,70 @@
+<nav th:fragment="menu-principal"
+	class="navbar navbar-expand-lg site-navbar navbar-light bg-light"
+	id="pb-navbar">
+	 <a class="navbar-brand" href="#"> MusicClips</a>
+
+
+
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item"><a class="btn btn-light" th:href="@{/}">Inicio</a>
+		</li>
+		<li class="nav-item"
+			sec:authorize="hasAnyAuthority('SUPERVISOR','ADMINISTRADOR')"><a
+			class="nav-link" th:href="@{/productos/indexPaginate}">Productos</a>
+
+
+
+		</li>
+
+		<li class="nav-item"
+			sec:authorize="hasAnyAuthority('SUPERVISOR','ADMINISTRADOR')"><a
+			class="nav-link" th:href="@{/categorias/index}">Categorias</a></li>
+
+		<li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+
+			<a class="nav-link" th:href="@{/usuarios/index}">Usuarios</a> <a
+			class="nav-link" th:href="@{/usuarios/buscaradmin}">Historial
+				compra de usuarios</a>
+
+		</li>
+	</ul>
+	<div sec:authorize="isAnonymous()">
+
+
+
+		<a class="btn btn-light" href="@{/login}">Ingresar</a>&nbsp; <a
+			class="btn btn-light" th:href="@{/signup}">Registrarse</a>
+	</div>
+	<div sec:authorize="isAuthenticated()">
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExample09" aria-controls="navbarsExample09"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse justify-content-md-center"
+			id="navbarsExample09">
+
+			<ul class="navbar-nav mr-auto">
+
+				<li class="nav-item"><a class="font-weight-lighter">Bienvenido:</a>&nbsp;<span
+					class="font-weight-lighter" sec:authentication="name"></span>&nbsp;
+</li>
+				<li class="nav-item" sec:authorize="hasAnyAuthority('USUARIO')">
+				
+			<a class="nav-link active"
+					th:href="@{/compras/search}">Mi Carrito</a>
+			<a class="nav-link active"
+					th:href="@{/compras/buscarcompras}">Mi Contenido</a>
+					
+					</li>
+				<li class="nav-item"><a class="btn btn-outline-dark btn-sm"
+					th:href="@{/logout}">Salir</a>
+					
+					</li>
+			</ul>
+
+		</div>
+	</div>
+</nav>

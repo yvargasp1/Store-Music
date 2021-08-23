@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+
+<title>MusicClips</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+	rel="stylesheet">
+</head>
+
+<body>
+	<header th:insert="fragments/menu :: menu-principal"> </header>
+	<main role="main">
+
+<hr>
+			<div class="container">
+			
+				<h3>Historial de compra</h3>
+				
+			<div th:if="${msg != null}" th:text="${msg}"
+				class="alert alert-success" role="alert"></div>
+				
+
+				<div th:each="compras : ${compra}">
+				
+				
+
+					
+
+						
+						<ul class="list-group">
+							<li class="list-group-item"><strong>Usuario: </strong> <span
+									th:text="${compras.idusuario.username}"></span></li>
+					
+							<li class="list-group-item">
+								<span th:text="${compras.idproductos.nombre}"></span></li>
+							<li class="list-group-item">Categoría:  <span
+								th:text="${compras.idproductos.categoria.nombre}"></span></li>
+							<li class="list-group-item">Publicado:  <span
+								th:text="${compras.fecha}"></span></li>
+
+							<li class="list-group-item">Precio:  <span
+								th:text="${compras.idproductos.precio}"></span></li>
+
+							<li class="list-group-item" th:text="${compras.idproductos.descripcion}">
+
+				
+					
+						
+					
+					
+				</ul>		
+						
+						
+						
+					
+				
+				
+				</div>	
+							
+
+				</div>	
+								
+				
+			
+			
+	
+		
+	
+	
+		
+		
+			
+
+			
+			
+	
+		<!-- /container -->
+	</main>
+	<footer th:insert="fragments/footer :: pie-pagina" class="footer">
+
+	</footer>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
