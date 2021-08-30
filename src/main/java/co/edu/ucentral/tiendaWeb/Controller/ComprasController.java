@@ -278,9 +278,13 @@ public class ComprasController {
 		return "redirect:/compras/search";
 		
 		}
+
+			attributes.addFlashAttribute("msg", "No hay cuenta bancaria asociada al usuario");
+				return "redirect:/compras/search";
+		
 			
 		
-		return "revisar";
+	
 		
 		
 	}
